@@ -1,13 +1,11 @@
 import * as d3 from "d3";
+import axios from "axios";
 import "./styles.css";
 
 // set the dimensions and margins of the graph
 const margin = { top: 10, right: 30, bottom: 30, left: 60 },
   width = 460 - margin.left - margin.right,
   height = 400 - margin.top - margin.bottom;
-
-const dataURL =
-  "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered_comma.csv";
 
 let svg = d3
   .select(".sample01")
@@ -18,7 +16,10 @@ let svg = d3
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 async function draw() {
-  let data = await d3.csv(dataURL);
+  let {
+    data: { data },
+  } = await axios("http://localhost:3001/api/sample01");
+
   data = data.map((d) => ({
     date: d3.timeParse("%Y-%m-%d")(d.date),
     value: d.value,
@@ -81,6 +82,7 @@ async function draw() {
       "d",
       d3
         .line()
+        .curve(d3.curveBasis)
         .x(function (d) {
           return x(d.date);
         })
