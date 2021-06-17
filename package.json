@@ -19,5 +19,8 @@
   "homepage": "https://github.com/seungdeng17/d3-lab#readme",
   "dependencies": {
     "d3": "^7.0.0"
+  },
+  "devDependencies": {
+    "express": "^4.17.1"
   }
 }
