@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "cd server && nodemon app.js",
+    "client": "webpack serve",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -18,9 +20,20 @@
   },
   "homepage": "https://github.com/seungdeng17/d3-lab#readme",
   "dependencies": {
-    "d3": "^7.0.0"
+    "axios": "^0.21.1",
+    "d3": "^7.0.0",
+    "express": "^4.17.1"
   },
   "devDependencies": {
-    "express": "^4.17.1"
+    "@babel/core": "^7.14.6",
+    "@babel/polyfill": "^7.12.1",
+    "babel-loader": "^8.2.2",
+    "concurrently": "^6.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.39.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
   }
 }

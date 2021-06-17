@@ -7,8 +7,8 @@ app.get("/api/sample01", (req, res) => {
   return res.status(200).json({ data: sample01 });
 });
 
-const PORT = 3030;
+const PORT = 3001;
 
 app.listen(PORT, function () {
-  console.log("Express server has started on port " + PORT);
+  console.log("\nExpress server has started on port " + PORT + "\n");
 });
